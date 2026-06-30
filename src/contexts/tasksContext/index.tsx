@@ -14,11 +14,11 @@ export function TasksProvider( { children } ) {
         return tasks;
     }
 
-    function getTask(index){
+    function getTask(index : number){
         return tasks[index];
     }
     
-    function createTask(description, date){
+    function createTask(description : string, date : Date){
         tasks.push({
             description: description,
             date: date
@@ -26,7 +26,7 @@ export function TasksProvider( { children } ) {
         setTasks(tasks)
     }
 
-    function updateTask(index, description, date){
+    function updateTask(index : number, description : string, date : Date){
         tasks[index] = {
             description: description,
             date: date
@@ -34,7 +34,7 @@ export function TasksProvider( { children } ) {
         setTasks(tasks)
     }
 
-    function deleteTask(index){
+    function deleteTask(index : number){
         tasks.splice(index, 1)
         setTasks(tasks)
     }

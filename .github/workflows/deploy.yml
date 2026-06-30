@@ -3,8 +3,6 @@ name: Test and Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 permissions:
    contents: write  # Ensure GitHub Actions can push to gh-pages
