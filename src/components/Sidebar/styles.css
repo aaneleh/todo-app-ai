@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+#sidebar {
+    @apply h-screen w-64 bg-gray-800 p-2;
+}
+
+#sidebar a {
+    @apply flex items-center gap-2 p-2 mb-2 rounded hover:bg-gray-600 hover:text-gray-100;
+}
