@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+#task-row {
+    @apply flex w-full justify-between;
+}

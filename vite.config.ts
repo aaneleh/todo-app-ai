@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [
     react(), tailwindcss()
   ],
-  base: '/todo-app-ai/'
+/*   base: '/todo-app-ai/' */
 })

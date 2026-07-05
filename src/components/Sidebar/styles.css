@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 #sidebar {
-    @apply h-screen w-64 bg-gray-800 p-2;
+    @apply h-screen min-w-64 bg-gray-800 p-2;
 }
 
 #sidebar a {

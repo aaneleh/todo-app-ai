@@ -1,47 +1,91 @@
-/* import { useContext, createContext, useState } from 'react';
+import { useContext, createContext, useState } from 'react';
+import type { Task } from '../../@types/task';
 
 const TasksContext = createContext({});
 
-export function useTasksContext(){
+export function useTasks(){
     return useContext(TasksContext);
 }
 
 export function TasksProvider( { children } ) {
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState<Task[]>([]);
+    const [nextId, setNextId] = useState<number>(0);
 
-
-    function getTasks(){
-        return tasks;
+    function updateState(){
+        setTasks(JSON.parse(localStorage.getItem("tasks")))
+        setNextId(JSON.parse(localStorage.getItem("nextId")))
     }
 
-    function getTask(index : number){
-        return tasks[index];
+    function updateLocalstorage(){
+        localStorage.setItem("tasks", JSON.stringify(tasks))
+        localStorage.setItem("nextId", JSON.stringify(nextId))
     }
     
-    function createTask(description : string, date : Date){
-        tasks.push({
-            description: description,
-            date: date
-        })
-        setTasks(tasks)
+    /* trocar para e enviar um object dividido por diasgetTasksByDate */
+    const getTasks = () => {
+        updateState()
+        return tasks.filter(task => task.id !== undefined) || null;
     }
 
-    function updateTask(index : number, description : string, date : Date){
-        tasks[index] = {
-            description: description,
-            date: date
+    const getTask = (id : number) => {
+        updateState()
+        return tasks.find(task => task.id === id) || null;
+    }
+    
+    const createTask = (newTask : Task) => {
+        if(tasks === null){
+            setTasks([{
+                id: nextId,
+                status: false,
+                description: newTask.description,
+                date: newTask.date
+            }]);
+            console.log('task created (1)', tasks)
+        } else {
+            setTasks([...tasks, {
+                id: nextId,
+                status: false,
+                description: newTask.description,
+                date: newTask.date
+            }]);
+            console.log('task created (n)', tasks)
         }
-        setTasks(tasks)
+        setNextId(nextId + 1);
+        updateLocalstorage();
     }
 
-    function deleteTask(index : number){
-        tasks.splice(index, 1)
-        setTasks(tasks)
+    const toggleStatus = (id : number) => {
+        setTasks(tasks => {
+            return tasks.map((task) => {
+                if(task.id === id) {
+                    return {...task, status: !task.status}
+                }
+                return task;
+            })
+        })
+        updateLocalstorage()
+    }
+
+    const updateTask = ( updatedTask : Task ) => {
+        setTasks(tasks => {
+            return tasks.map((task) => {
+                if(task.id === updatedTask.id) {
+                    return {...task, description: updatedTask.description, date: updatedTask.date}
+                }
+                return task;
+            })
+        })
+        updateLocalstorage()
+    }
+
+    const deleteTask = (id : number) => {
+        setTasks(tasks.filter(task => task.id !== id))
+        updateLocalstorage()
     }
 
     return (
-        <TasksContext.Provider value={ { getTasks, getTask, createTask, updateTask, deleteTask } }>
+        <TasksContext.Provider value={ { tasks, getTasks, getTask, createTask, toggleStatus, updateTask, deleteTask } }>
             { children }
         </TasksContext.Provider> 
     )
-} */
+}

@@ -8,7 +8,6 @@ function Sidebar() {
     <aside id="sidebar">
       <Link to="/"> <FiHome/> Home</Link>
       <Link to="/all"> <FiList/> All</Link>
-      <Link to="/new"> <FiPlusCircle/> New</Link>
       <Link to="/settings"> <FiSettings/>Settings</Link>
     </aside>
   )
