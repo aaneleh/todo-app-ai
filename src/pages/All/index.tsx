@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useTasks } from "../../contexts/tasksContext";
 import TaskRow from "../../components/TaskRow";
 import type { Task } from "../../@types/task";
@@ -11,14 +10,18 @@ function All() {
   return (
     <section id="all">
       <h2>All</h2>
-      <div className="all-list">
-        {tasks === undefined && <p>No tasks</p>}
+      {(tasks === undefined || tasks.length === 0 || tasks === null) 
+        && 
+        <div className="all-list">
+          <p> No tasks found </p>
+        </div>}
 
-          {tasks?.map((el : Task) => {
-            return <div key={el.id}>
-              <TaskRow id={el.id} status={el.status} description={el.description} date={el.date}/>
-            </div>
-          })}
+      <div className="all-list"> 
+        {tasks?.map((el : Task) => {
+          return <div key={el.id}>
+            <TaskRow id={el.id} status={el.status} description={el.description} date={el.date}/>
+          </div>
+        })}
       </div>
       <NewTask/>
     </section>

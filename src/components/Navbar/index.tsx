@@ -1,11 +1,11 @@
 import { Link } from "react-router";
-import { FiHome, FiList, FiPlusCircle, FiSettings } from "react-icons/fi";
+import { FiHome, FiList, FiSettings } from "react-icons/fi";
 import "./styles.css";
 
-function Sidebar() {
+function Navbar() {
 
   return (
-    <aside id="sidebar">
+    <aside id="navbar">
       <Link to="/"> <FiHome/> Home</Link>
       <Link to="/all"> <FiList/> All</Link>
       <Link to="/settings"> <FiSettings/>Settings</Link>
@@ -13,4 +13,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default Navbar

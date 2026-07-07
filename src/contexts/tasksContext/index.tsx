@@ -54,11 +54,11 @@ export function TasksProvider( { children } ) {
         updateLocalstorage();
     }
 
-    const toggleStatus = (id : number) => {
+    const toggleStatus = (id : number, status : boolean) => {
         setTasks(tasks => {
             return tasks.map((task) => {
                 if(task.id === id) {
-                    return {...task, status: !task.status}
+                    return {...task, status: status}
                 }
                 return task;
             })

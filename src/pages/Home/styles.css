@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 #home {
-    @apply h-screen pt-2 p-4 flex flex-col justify-between;
+    @apply h-full pt-2 p-4 flex flex-col justify-between;
 }
 
 h2 {

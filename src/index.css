@@ -3,9 +3,22 @@
 #root {
   max-width: 100%;
   min-height: 100svh;
-  @apply flex flex-row bg-gray-900 text-gray-300;
+  @apply flex flex-row bg-gray-300 text-gray-950 dark:bg-gray-950 dark:text-gray-300;
 }
 
 main {
-  @apply w-full;
+  @apply w-full h-full;
+}
+
+section {
+  @apply h-[calc(100svh)];
+}
+
+@media screen and (max-width: 768px) {
+  #root {
+    @apply flex-col-reverse justify-between;
+  }
+  section {
+    @apply h-[calc(100svh-96px)];
+  }
 }

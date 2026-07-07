@@ -1,13 +1,20 @@
+import { useState } from "react";
 import type { Task } from "../../@types/task"
 import { useTasks } from "../../contexts/tasksContext";
 import './styles.css';
-import { FiTrash, FiEdit3 } from "react-icons/fi";
+import { FiTrash, FiEdit3, FiCheck } from "react-icons/fi";
 
 const TaskRow: React.FC<Task> = (task) => {
 
-  console.log(task)
   const { deleteTask } = useTasks() as {deleteTask};
+  const { toggleStatus } = useTasks() as {toggleStatus};
 
+  const [ checkbox, setCheckbox ] = useState(task.status);
+
+  const handleCheckbox = () => {
+    setCheckbox(!checkbox);
+    toggleStatus(task.id, checkbox);
+  }
 
   const handleDelete = (e) => {
     if(e.key === "Enter" || e.type === "click"){
@@ -20,15 +27,17 @@ const TaskRow: React.FC<Task> = (task) => {
     <>
         {task !== undefined && 
           <div id="task-row">
-            <p>{task.status ? "CHECKED" : "UNCHECKED"}</p>
+            <button className={`checkbox ${checkbox ? "checked" : "unchecked"}`} onClick={handleCheckbox}>
+              <FiCheck />
+            </button>
             <p>{task.description}</p>
-            <p>{task.date.toString()}</p>
-            <p>
+            <p className="subtext">{task.date.toString()}</p>
+            <div className="icon">
               <FiEdit3 />
-            </p>
-            <p onClick={(handleDelete)} onKeyDown={(handleDelete)}>
+            </div>
+            <button className="icon" onClick={(handleDelete)} onKeyDown={(handleDelete)} tabIndex={0}>
               <FiTrash />
-            </p>
+            </button>
           </div>
         }
     </>

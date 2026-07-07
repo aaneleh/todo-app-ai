@@ -2,13 +2,13 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router";
 import './index.css'
 import { Home, All, Settings } from './pages'
-import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
 import { TasksProvider } from './contexts/tasksContext';
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <TasksProvider>
-      <Sidebar/>
+      <Navbar/>
       <main>
         <Routes>
             <Route path="/" element={<Home/>} />

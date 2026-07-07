@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
 #all {
-    @apply h-screen pt-2 p-4 flex flex-col justify-between;
+    @apply pt-2 p-4 flex flex-col gap-4;
 }
 
 h2 {
     @apply text-2xl font-semibold;
+}
+
+.all-list {
+    @apply h-full flex flex-col gap-2 justify-start overflow-y-auto;
 }
