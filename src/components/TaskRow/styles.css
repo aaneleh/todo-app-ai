@@ -3,6 +3,9 @@
 #task-row {
     @apply flex w-full items-center justify-between p-4 rounded bg-gray-400 dark:bg-gray-900 hover:dark:bg-gray-800;
 }
+#task-row p {
+    @apply w-full;
+}
 #task-row .icon {
     @apply cursor-pointer p-2 rounded hover:bg-gray-700;
 }
@@ -10,10 +13,10 @@
     @apply w-6 h-6;
 }
 #task-row .subtext{
-    @apply dark:text-gray-500;
+    @apply w-36 dark:text-gray-500;
 }
 .checkbox {
-    @apply w-6 h-6 mr-2 cursor-pointer rounded;
+    @apply min-w-6 h-6 mr-2 cursor-pointer rounded;
     &.unchecked  {
         @apply border-gray-500 border-2;
 

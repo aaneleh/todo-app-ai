@@ -1,8 +1,11 @@
 import { useState } from "react";
-import type { Task } from "../../@types/task"
-import { useTasks } from "../../contexts/tasksContext";
-import './styles.css';
 import { FiTrash, FiEdit3, FiCheck } from "react-icons/fi";
+import { formatDistance } from "date-fns";
+import { enGB, pt } from "date-fns/locale";
+
+import { useTasks } from "../../contexts/tasksContext";
+import type { Task } from "../../@types/task"
+import './styles.css';
 
 const TaskRow: React.FC<Task> = (task) => {
 
@@ -31,7 +34,7 @@ const TaskRow: React.FC<Task> = (task) => {
               <FiCheck />
             </button>
             <p>{task.description}</p>
-            <p className="subtext">{task.date.toString()}</p>
+            <p className="subtext">{ formatDistance(task.date, new Date(), {locale: enGB })}</p>
             <div className="icon">
               <FiEdit3 />
             </div>
