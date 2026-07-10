@@ -21,7 +21,7 @@ export function TasksProvider( { children } ) {
         localStorage.setItem("nextId", JSON.stringify(nextId))
     }
     
-    /* trocar para e enviar um object dividido por diasgetTasksByDate */
+    /* trocar para e enviar um object dividido por dias -> getTasksByDate */
     const getTasks = () => {
         updateState()
         return tasks.filter(task => task.id !== undefined) || null;

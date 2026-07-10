@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+#update-task-modal {
+    @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] rounded
+        p-8 flex flex-col gap-4 w-120 dark:bg-gray-900 backdrop-blur-xs;
+    
+    .input-wrapper {
+        @apply flex flex-col gap-2;
+    }
+}
+
+.buttons {
+    @apply flex items-center gap-2;
+    * {
+        @apply w-full
+    }
+    .grey-button {
+        @apply dark:bg-gray-800 dark:hover:bg-gray-700;
+    }
+}

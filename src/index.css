@@ -22,3 +22,10 @@ section {
     @apply h-[calc(100svh-96px)];
   }
 }
+
+h2 {
+    @apply text-2xl font-semibold;
+}
+h3 {
+    @apply text-xl font-semibold;
+}

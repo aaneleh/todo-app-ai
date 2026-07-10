@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 #home {
-    @apply h-full pt-2 p-4 flex flex-col justify-between;
+    @apply h-full pt-2 p-4 flex flex-col justify-between gap-4;
 }
 
-h2 {
-    @apply text-2xl font-semibold;
+.card {
+    @apply flex flex-col gap-4 p-4 rounded bg-gray-300 dark:bg-gray-900;
 }
