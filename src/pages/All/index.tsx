@@ -3,9 +3,11 @@ import TaskRow from "../../components/TaskRow";
 import type { Task } from "../../@types/task";
 import NewTask from "../../components/NewTask";
 import './styles.css';
+import { useTranslation } from "react-i18next";
 
 function All() {
   const { tasks } = useTasks() as {tasks: Task[]};
+  const { t } = useTranslation();
 
   return (
     <section id="all">
@@ -13,7 +15,7 @@ function All() {
       {(tasks === undefined || tasks.length === 0 || tasks === null) 
         && 
         <div className="all-list">
-          <p> No tasks found </p>
+          <p> {t('tasks.notfound')} </p>
         </div>}
 
       <div className="all-list"> 

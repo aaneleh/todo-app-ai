@@ -4,6 +4,7 @@ import './index.css'
 import { Home, All, Settings } from './pages'
 import Navbar from './components/Navbar';
 import { TasksProvider } from './contexts/tasksContext';
+import '../i18n.js'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
