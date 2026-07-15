@@ -6,7 +6,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
@@ -19,6 +19,18 @@ i18n
           },
           tasks: {
             notfound: 'No tasks found'
+          },
+          settings: {
+            title: 'Settings',
+            subtitleLanguage: 'Language',
+            subtitleTheme: 'Theme',
+            themeLight: 'Light',
+            themeDark: 'Dark',
+            subtitleAI: 'AI',
+            AIChat: 'Chat',
+            AISummary: 'Smart Summary',
+            AISuggestions: 'Suggestions',
+            save: 'Save',
           }
         }
       },
@@ -29,6 +41,18 @@ i18n
           },
           tasks: {
             notfound: 'Nenhuma tarefa encontrada'
+          },
+          settings: {
+            title: 'Configurações',
+            subtitleLanguage: 'Idioma',
+            subtitleTheme: 'Tema',
+            themeLight: 'Claro',
+            themeDark: 'Escuro',
+            subtitleAI: 'IA',
+            AIChat: 'Chat',
+            AISummary: 'Resumo inteligente',
+            AISuggestions: 'Sugestões',
+            save: 'Salvar',
           }
         }
       }

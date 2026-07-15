@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type SetStateAction } from 'react';
 import './styles.css';
 import { useTranslation } from "react-i18next";
 
@@ -12,70 +12,104 @@ function Settings() {
   const { t, i18n } = useTranslation();
 
   const [ theme, setTheme ] = useState<string>();
+  const [ AI, setAI ] = useState({
+    chat: true,
+    summary: true,
+    suggestions: true
+  });
 
   useEffect(() => {
     setTheme(localStorage.getItem('theme')?.toString())
+    if(localStorage.getItem('AI')) setAI(JSON.parse(localStorage.getItem('AI')))
   },[])
 
-  const handleTheme = (e) => {
+  const handleTheme = (e: { target: { id: SetStateAction<string | undefined>; }; }) => {
     if(e.target.id === 'light' || e.target.id === 'dark') {
-      localStorage.setItem('theme', e.target.id);
       setTheme(e.target.id)
     } 
   }
 
+  const handleLanguage = (e: { target: { value: string | undefined; }; }) => {
+    i18n.changeLanguage(e.target.value)
+  }
+
+  const handleAI = (e) => {
+    setAI({
+      ...AI,
+      [e.target.id]: e.target.checked,
+    })
+  }
+
+  const handleSave = (e) => {
+    if(theme !== undefined) localStorage.setItem('theme', theme);
+    localStorage.setItem('AI', JSON.stringify(AI));
+  }
+
   return (
     <section id="settings">
-      <h2>{t('menu.settings')}</h2>
-
-
+      <h2>{t('settings.title')}</h2>
 
       <div className="input-wrapper">
-        <h4 className="input-title">Idioma</h4>
-          {Object.keys(lngs).map((lng) => (
-            <button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal' }} type="submit" onClick={() => i18n.changeLanguage(lng)}>
-              {lngs[lng].nativeName}
-            </button>
-          ))}
-{/*         <select name="language" id="language">
-          <option value="pt">Português</option>
-          <option value="en">Inglês</option>
-        </select> */}
+        <h4 className="input-title">{t('settings.subtitleLanguage')}</h4>
+        <select name="language" id="language" onChange={handleLanguage}>
+          {
+            Object.keys(lngs).map((lng) => (
+              <option key={lng} value={lng} > 
+                {lngs[lng].nativeName} 
+              </option>
+            ))
+          }
+        </select>
       </div>
 
       <div className="input-wrapper">
-        <h4 className="input-title">Tema</h4>
+        <h4 className="input-title">{t('settings.subtitleTheme')}</h4>
 
-        <label htmlFor="light" className="radio-label" onClick={handleTheme}>
+        <label htmlFor="light" className="radio-label" onChange={handleTheme}>
           <div className="radio-wrapper">
             <input type="radio" name="theme" id="light" checked={theme == 'light'}/>
             <span className="custom-radio"></span>
           </div>
-          Claro
+          {t('settings.themeLight')}
         </label>
 
-        <label htmlFor="dark" className="radio-label" onClick={handleTheme}>
+        <label htmlFor="dark" className="radio-label" onChange={handleTheme}>
           <div className="radio-wrapper">
             <input type="radio" name="theme" id="dark" checked={theme == 'dark'}/>
             <span className="custom-radio"></span>
           </div>
-          Escuro
+          {t('settings.themeDark')}
         </label>
       </div>
 
       <div className="input-wrapper">
-        <h4 className="input-title">IA</h4>
+        <h4 className="input-title">{t('settings.subtitleAI')}</h4>
+
         <label htmlFor="chat" className="checkbox-label">
           <div className="checkbox-wrapper">
-            <input type="checkbox" name="chat" id="chat"/>
+            <input type="checkbox" name="chat" id="chat" onChange={handleAI} checked={AI.chat}/>
             <span className="custom-checkbox"></span>
           </div>
-          Chat
+          {t('settings.AIChat')}
+        </label>
+        <label htmlFor="summary" className="checkbox-label">
+          <div className="checkbox-wrapper">
+            <input type="checkbox" name="summary" id="summary" onChange={handleAI} checked={AI.summary}/>
+            <span className="custom-checkbox"></span>
+          </div>
+          {t('settings.AISummary')}
+        </label>
+        <label htmlFor="suggestions" className="checkbox-label">
+          <div className="checkbox-wrapper">
+            <input type="checkbox" name="suggestions" id="suggestions" onChange={handleAI} checked={AI.suggestions}/>
+            <span className="custom-checkbox"></span>
+          </div>
+          {t('settings.AISuggestions')}
         </label>
       </div>
 
       <div className="buttons">
-        <button>Salvar</button>
+        <button onClick={handleSave}>{t('settings.save')}</button>
       </div>
     </section>
   )
