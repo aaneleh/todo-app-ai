@@ -15,10 +15,28 @@ i18n
       en: {
         translation: {
           menu: {
+            home: 'Home',
+            all: 'All Tasks',
+            chat: 'Chat',
             settings: 'Settings'
           },
+          home: {
+            title: 'Home',
+            progressTitle: 'Progress',
+            progressCompleted: 'completed',
+            progressTotal: 'total',
+            todayTitle: 'Today',
+            todayNoTasks: 'No tasks for today',
+          },
           tasks: {
-            notfound: 'No tasks found'
+            title: 'All tasks',
+            notfound: 'No tasks found',
+            description: 'Description',
+            date: 'Date',
+            submit: 'Create',
+            updateModal: 'Updating task',
+            close: 'Close',
+            save: 'Save'
           },
           settings: {
             title: 'Settings',
@@ -37,10 +55,28 @@ i18n
       pt: {
         translation: {
           menu: {
+            home: 'Início',
+            all: 'Tarefas',
+            chat: 'Chat',
             settings: 'Configurações'
           },
+          home: {
+            title: 'Início',
+            progressTitle: 'Progresso',
+            progressCompleted: 'completas',
+            progressTotal: 'totais',
+            todayTitle: 'Hoje',
+            todayNoTasks: 'Nenhuma tarefa para hoje',
+          },
           tasks: {
-            notfound: 'Nenhuma tarefa encontrada'
+            title: 'Todas as tarefas',
+            notfound: 'Nenhuma tarefa encontrada',
+            description: 'Descrição',
+            date: 'Data',
+            submit: 'Criar',
+            updateModal: 'Atualizando tarefa',
+            close: 'Fechar',
+            save: 'Salvar'
           },
           settings: {
             title: 'Configurações',

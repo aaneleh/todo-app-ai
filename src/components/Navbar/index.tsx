@@ -2,8 +2,11 @@ import { Link } from "react-router";
 import { FiHome, FiList, FiMessageCircle, FiSettings } from "react-icons/fi";
 import "./styles.css";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
+
+  const { t } = useTranslation();
 
   const [ AI, setAI ] = useState({
     chat: false,
@@ -17,11 +20,11 @@ function Navbar() {
 
   return (
     <aside id="navbar">
-      <Link to="/"> <FiHome/> Home</Link>
-      <Link to="/all"> <FiList/> All</Link>
-      { AI.chat && <Link to="/chat"> <FiMessageCircle/>Chat</Link>  }
+      <Link to="/"> <FiHome/> {t('menu.home')} </Link>
+      <Link to="/all"> <FiList/> {t('menu.all')} </Link>
+      { AI.chat && <Link to="/chat"> <FiMessageCircle/> {t('menu.chat')} </Link>  }
       
-      <Link to="/settings"> <FiSettings/>Settings</Link>
+      <Link to="/settings"> <FiSettings/> {t('menu.settings')} </Link>
     </aside>
   )
 }

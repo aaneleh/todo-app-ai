@@ -4,27 +4,31 @@ import TaskRow from "../../components/TaskRow";
 import type { Task } from "../../@types/task";
 import ProgressBar from "../../components/ProgressBar"
 import './styles.css'
+import { useTranslation } from "react-i18next";
 
 function Home() {
+
+  const { t } = useTranslation();
+
   const { tasks } = useTasks() as {tasks: Task[]};
 
   const d = new Date();
 
   return (
     <section id="home">
-      <h2>Home</h2>
+      <h2> {t("home.title")} </h2>
       
       <div className="progress-card card">
-        <h3>Progress</h3>
+        <h3> {t("home.progressTitle")}</h3>
         <ProgressBar total={10} completed={4}/>
       </div>
 
       <div className="today-card card">
-        <h3>Today</h3>
+        <h3> {t("home.todayTitle")} </h3>
         {(tasks === undefined || tasks.length === 0 || tasks === null) 
           && 
           <div>
-            <p> No tasks for today </p>
+            <p> {t("home.todayNoTasks")} </p>
           </div>}
 
         <div> 

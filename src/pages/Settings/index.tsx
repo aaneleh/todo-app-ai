@@ -41,8 +41,13 @@ function Settings() {
   }
 
   const handleSave = (e) => {
-    if(theme !== undefined) localStorage.setItem('theme', theme);
+    if(theme !== undefined) {
+      localStorage.setItem('theme', theme);
+      if(theme === "dark") document.documentElement.classList.add("dark")
+      if(theme === "light") document.documentElement.classList.remove("dark")
+    }
     localStorage.setItem('AI', JSON.stringify(AI));
+    
   }
 
   return (

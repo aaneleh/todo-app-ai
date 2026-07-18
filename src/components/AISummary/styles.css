@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+#navbar {
+    @apply h-screen min-w-64 p-2 bg-gray-400 dark:bg-gray-900;
+}
+
+#navbar a {
+    @apply flex items-center gap-2 p-2 mb-2 rounded hover:bg-gray-500 dark:hover:bg-gray-800;
+}
+
+@media screen and (max-width: 768px) {
+    #navbar {
+        @apply flex flex-row items-center justify-center h-24 gap-12;
+    }
+    #navbar a {
+        @apply flex flex-col mb-0 w-24;
+    }
+    #navbar svg {
+        @apply w-6 h-6;
+    }
+} 

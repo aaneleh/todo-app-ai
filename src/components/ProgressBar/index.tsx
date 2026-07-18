@@ -1,12 +1,15 @@
+import { useTranslation } from 'react-i18next';
 import './styles.css';
 
 const ProgressBar: React.FC<{ total: number, completed: number }> = ( { total, completed } ) => {
 
+  const { t } = useTranslation();
+
   return (
     <div id="progress-bar">
       <div className="progress-bar-label">
-        <p>{completed} completed</p>
-        <p>{total} total</p>
+        <p>{completed} {t('home.progressCompleted')}</p>
+        <p>{total} {t('home.progressTotal')}</p>
       </div>
       <div className="progress-bar-wrapper">
         <div className="progress-bar-fill" style={{ width: `${Math.round((completed/total) * 100)}%` }}>

@@ -11,7 +11,7 @@ function All() {
 
   return (
     <section id="all">
-      <h2>All</h2>
+      <h2> {t('tasks.title')} </h2>
       {(tasks === undefined || tasks.length === 0 || tasks === null) 
         && 
         <div className="all-list">

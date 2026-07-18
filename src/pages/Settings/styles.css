@@ -14,7 +14,7 @@
         @apply flex items-center gap-2 relative;
     }
     select {
-        @apply bg-gray-800 rounded p-2;
+        @apply bg-gray-400 dark:bg-gray-800 rounded p-2;
     }
     button {
         @apply py-2 px-4 bg-blue-600 rounded cursor-pointer hover:bg-blue-700;
@@ -32,11 +32,11 @@
     @apply absolute opacity-0 cursor-pointer;
 }
 .custom-checkbox {
-    @apply absolute top-0 left-2 h-4 w-8 bg-gray-700 rounded-full;
+    @apply absolute top-0 left-2 h-4 w-8 bg-gray-600 dark:bg-gray-700 rounded-full;
 }
 .custom-checkbox::after {
     content: '';
-    @apply absolute -top-1 -left-2 h-6 w-6 bg-gray-300 rounded-full transition-all;
+    @apply absolute -top-1 -left-2 h-6 w-6 bg-gray-300 border-2 border-gray-400 rounded-full transition-all;
 }
 .checkbox-wrapper input:checked ~ .custom-checkbox {
     @apply bg-blue-600;

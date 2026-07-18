@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useTasks } from "../../contexts/tasksContext";
 import type { Task } from "../../@types/task";
 import './styles.css'
+import { useTranslation } from "react-i18next";
 
 const UpdateTask = ({trigger, setTrigger, id, description, date}) => {
+
+  const { t } = useTranslation();
 
   const { updateTask } = useTasks() as {updateTask: any};
 
@@ -36,20 +39,20 @@ const UpdateTask = ({trigger, setTrigger, id, description, date}) => {
 
   return (
     <form onSubmit={handleSubmit} id="update-task-modal">
-      <h3>Updating Task</h3>
+      <h3> {t('tasks.updateModal')} </h3>
       <div className="input-wrapper">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description"> {t('tasks.description')} </label>
           <input type="text" id="description" placeholder="Description" onChange={handleChange} value={formData.description}/>
       </div>
       
       <div className="input-wrapper">
-          <label htmlFor="date">Date</label>
+          <label htmlFor="date">{t('tasks.date')} </label>
           <input type="datetime-local" id="date" onChange={handleChange} value={formData.date}/>
       </div>
 
       <div className="buttons">
-        <button onClick={handleClose} className="button grey-button">Fechar</button>
-        <input type="submit" value="Submit" onChange={handleSubmit} className="button"/>
+        <button onClick={handleClose} className="button grey-button">{t('tasks.close')} </button>
+        <input type="submit" value={t('tasks.save')}  onChange={handleSubmit} className="button"/>
       </div>
     </form>
   )

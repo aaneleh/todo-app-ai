@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+@theme {
+  --dark-background: #fff;
+  --background: #EBEBEB;
+  --light-background: #D1D1D1;
+  --primary: #8000FF;
+  --font: #000000;
+}
+
+/* Dark mode setup */
+@custom-variant dark (&:where(.dark, .dark *));
+@layer base {
+  @variant dark {
+    --dark-background: #000000;
+    --background: #1F1F1F;
+    --light-background: #333333;
+    --primary: #8000FF;
+    --font: #fff;
+  }
+}
+
 #root {
   max-width: 100%;
   min-height: 100svh;
