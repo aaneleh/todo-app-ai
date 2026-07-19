@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+#task-row {
+    @apply flex w-full items-center justify-between p-4 rounded bg-background hover:bg-light-background;
+}
+#task-row p {
+    @apply w-full;
+}
+#task-row .icon {
+    @apply cursor-pointer p-2 rounded hover:bg-dark-background;
+}
+#task-row svg {
+    @apply w-6 h-6;
+}
+#task-row .subtext{
+    @apply w-36 ;
+}
+.checkbox {
+    @apply min-w-6 h-6 mr-2 cursor-pointer rounded;
+    &.unchecked  {
+        @apply border-border border-2;
+
+        svg {
+            @apply hidden;
+        }
+    }
+}
+.checkbox.checked{
+    @apply bg-primary rounded;
+
+}

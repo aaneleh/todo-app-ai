@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+#new-task-form {
+    @apply flex items-end bg-dark-background rounded pt-2 p-4 gap-4 w-full; 
+}
+
+.input-wrapper {
+    @apply flex flex-col w-full;
+}
+
+.input-wrapper input {
+    color-scheme: dark;
+    @apply bg-light-background rounded py-2 px-4;
+}
+
+.button {
+    @apply rounded py-2 px-4 cursor-pointer text-button-font bg-primary hover:bg-primary-hover;
+}

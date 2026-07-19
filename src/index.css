@@ -1,8 +1,57 @@
 @import "tailwindcss";
 
+@theme {
+  --color-dark-background: #EBEBEB;
+  --color-background: #fff;
+  --color-light-background: #D1D1D1;
+  --color-primary: #8000FF;
+  --color-primary-hover: #8000FF;
+  --color-border: grey;
+  --color-font: #000000;
+  --color-button-font: #fff;
+}
+
+/* Dark mode setup */
+@custom-variant dark (&:where(.dark, .dark *));
+@layer base {
+  @variant dark {
+    --color-dark-background: #000000;
+    --color-background: #1F1F1F;
+    --color-light-background: #333333;
+    --color-primary: #8000FF;
+    --color-primary-hover: #8000FF;
+    --color-border: grey;
+    --color-font: #fff;
+    --color-button-font: #fff;
+  }
+}
+
 #root {
   max-width: 100%;
   min-height: 100svh;
-  @apply flex flex-row bg-gray-900 text-gray-300;
+  @apply flex flex-row bg-dark-background text-font;
 }
 
+main {
+  @apply w-full h-full;
+}
+
+section {
+  @apply h-[calc(100svh)];
+}
+
+@media screen and (max-width: 768px) {
+  #root {
+    @apply flex-col-reverse justify-between;
+  }
+  section {
+    @apply h-[calc(100svh-96px)];
+  }
+}
+
+h2 {
+    @apply text-2xl font-semibold;
+}
+h3 {
+    @apply text-xl font-semibold;
+}

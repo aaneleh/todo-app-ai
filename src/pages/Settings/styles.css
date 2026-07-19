@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+#settings {
+    @apply h-full pt-2 p-4 flex flex-col justify-between gap-8;
+
+    h4 {
+        @apply text-xl;
+    }
+
+    .input-wrapper {
+        @apply flex flex-col gap-2;
+    }
+    .radio-wrapper, .checkbox-label {
+        @apply flex items-center gap-2 relative;
+    }
+    select {
+        @apply bg-light-background rounded p-2;
+    }
+    button {
+        @apply py-2 px-4 rounded cursor-pointer bg-primary hover:bg-primary-hover;
+    }
+}
+
+/* CHECKBOX */
+.checkbox-label {
+    @apply flex gap-2 items-center;
+}
+.checkbox-wrapper {
+    @apply relative h-4 w-12;
+}
+.checkbox-wrapper input {
+    @apply absolute opacity-0 cursor-pointer;
+}
+.custom-checkbox {
+    @apply absolute top-0 left-2 h-4 w-8 bg-border rounded-full;
+}
+.custom-checkbox::after {
+    content: '';
+    @apply absolute -top-1 -left-2 h-6 w-6 bg-background border-2 border-border rounded-full transition-all;
+}
+.checkbox-wrapper input:checked ~ .custom-checkbox {
+    @apply bg-primary;
+    &::after{
+        @apply left-4 transition-all;
+    }
+}
+
+
+/* RADIO */
+.radio-label {
+    @apply flex gap-2 items-center;
+}
+.radio-wrapper {
+    @apply relative h-6 w-10;
+}
+.radio-wrapper input {
+    @apply absolute opacity-0 cursor-pointer;
+}
+.custom-radio {
+    @apply absolute top-0 left-2 h-6 w-6 border-2 border-border rounded-full;
+}
+.radio-wrapper input:checked ~.custom-radio {
+    @apply border-6 border-primary bg-background;
+}
