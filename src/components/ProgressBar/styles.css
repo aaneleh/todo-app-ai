@@ -1,20 +1,20 @@
 @import "tailwindcss";
+@import "../../index.css";
 
 #progress-bar {
     @apply flex flex-col gap-4;
 }
 .progress-bar-label {
-    @apply w-full h-4 flex items-center justify-between text-gray-300 font-semibold;
+    @apply w-full h-4 flex items-center justify-between opacity-40 font-semibold;
 }
 .progress-bar-label-2 {
-    @apply w-full h-4 flex items-center justify-end gap-1 text-gray-300 font-semibold;
+    @apply w-full h-4 flex items-center justify-end gap-1 font-semibold;
 }
 .progress-bar-wrapper {
-    @apply w-full h-4 bg-gray-300 rounded overflow-clip;
+    @apply w-full h-4 bg-dark-background rounded overflow-clip;
 }
 
 .progress-bar-fill {
-    @apply h-4 flex items-center justify-end pr-1
-        text-gray-900 font-semibold
-        bg-linear-to-r from-blue-800 to-blue-500;
+    @apply h-4 flex items-center justify-end pr-1 font-semibold text-button-font
+        bg-linear-to-r from-primary-hover to-primary;
 }

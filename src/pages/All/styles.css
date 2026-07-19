@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../../index.css";
 
 #all {
     @apply pt-2 p-4 flex flex-col gap-4;
