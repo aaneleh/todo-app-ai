@@ -12,9 +12,15 @@ const ProgressBar: React.FC<{ total: number, completed: number }> = ( { total, c
         <p>{total} {t('home.progressTotal')}</p>
       </div>
       <div className="progress-bar-wrapper">
-        <div className="progress-bar-fill" style={{ width: `${Math.round((completed/total) * 100)}%` }}>
-          <p>{Math.round((completed/total) * 100)}%</p>
-        </div>
+        { total > 0 ?
+          <div className="progress-bar-fill" style={{ width: `${Math.round((completed/total) * 100)}%` }}>
+            <p>{Math.round((completed/total) * 100)}%</p>
+          </div>
+        : 
+        <div className="progress-bar-fill" style={{ width: `0%` }}>
+            <p>0%</p>
+          </div>
+        }
       </div>
     </div>
   )

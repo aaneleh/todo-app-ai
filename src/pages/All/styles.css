@@ -12,3 +12,7 @@ h2 {
 .all-list {
     @apply h-full flex flex-col gap-2 justify-start overflow-y-auto;
 }
+
+#all .new-task-form-wrapper {
+    @apply flex items-end bg-background rounded pt-2 p-4 gap-4 w-full;
+}

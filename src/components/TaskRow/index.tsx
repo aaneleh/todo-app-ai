@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { FiTrash, FiEdit3, FiCheck } from "react-icons/fi";
 import { formatDistance } from "date-fns";
-import { enGB } from "date-fns/locale";
+import { enGB, ptBR } from "date-fns/locale";
 import { useTasks } from "../../contexts/tasksContext";
 import type { Task } from "../../@types/task"
 import './styles.css';
 import UpdateTask from "../UpdateTask";
+import i18next from "i18next";
 
 const TaskRow: React.FC<Task> = (task) => {
 
@@ -16,8 +17,13 @@ const TaskRow: React.FC<Task> = (task) => {
   const [ modal, setModal ] = useState(false);
 
   const handleCheckbox = () => {
-    setCheckbox(!checkbox);
-    toggleStatus(task.id, checkbox);
+    if(checkbox) {
+      setCheckbox(false);
+      toggleStatus(task.id, false);
+    } else {
+      setCheckbox(true);
+      toggleStatus(task.id, true);
+    }
   }
 
   const handleDelete = (e) => {
@@ -36,12 +42,13 @@ const TaskRow: React.FC<Task> = (task) => {
     <>
         {task !== undefined && 
           <div id="task-row">
+
             <button className={`checkbox ${checkbox ? "checked" : "unchecked"}`} onClick={handleCheckbox}>
               <FiCheck />
             </button>
             
             <p>{task.description}</p>
-            <p className="subtext">{ formatDistance(task.date, new Date(), {locale: enGB })}</p>
+            <p className="subtext">{ formatDistance(task.date, new Date(), {locale: i18next.resolvedLanguage == 'pt' ? ptBR : enGB })}</p>
 
             <button className="icon" onClick={(handleUpdate)} onKeyDown={(handleUpdate)} tabIndex={0}>
               <FiEdit3 />

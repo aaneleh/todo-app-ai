@@ -5,13 +5,27 @@ import NewTask from "../../components/NewTask";
 import './styles.css';
 import { useTranslation } from "react-i18next";
 
+import { useEffect, useState } from "react";
+import AISuggestion from "../../components/AISuggestion";
+
 function All() {
   const { tasks } = useTasks() as {tasks: Task[]};
   const { t } = useTranslation();
 
+  const [ AI, setAI ] = useState({
+    chat: false,
+    summary: false,
+    suggestions: false
+  });
+
+  useEffect(() => {
+    if(localStorage.getItem('AI')) setAI(JSON.parse(localStorage.getItem('AI')))
+  },[])
+
   return (
     <section id="all">
       <h2> {t('tasks.title')} </h2>
+
       {(tasks === undefined || tasks.length === 0 || tasks === null) 
         && 
         <div className="all-list">
@@ -24,8 +38,17 @@ function All() {
             <TaskRow id={el.id} status={el.status} description={el.description} date={el.date}/>
           </div>
         })}
+      
+        { 
+          AI.summary && 
+          
+          <AISuggestion></AISuggestion>
+        }
       </div>
-      <NewTask/>
+
+      <div className="new-task-form-wrapper">
+        <NewTask/>
+      </div>
     </section>
   )
 }

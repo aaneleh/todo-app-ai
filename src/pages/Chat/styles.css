@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+#chat {
+    @apply pt-2 p-4 flex flex-col gap-4;
+}

@@ -2,7 +2,7 @@
 @import "../../index.css";
 
 #new-task-form {
-    @apply flex items-end bg-dark-background rounded pt-2 p-4 gap-4 w-full; 
+    @apply flex items-end gap-4 w-full; 
 }
 
 .input-wrapper {
