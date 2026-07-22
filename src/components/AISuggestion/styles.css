@@ -1,2 +1,15 @@
 @import "tailwindcss";
 @import "../../index.css";
+
+#ai-suggestion {
+    @apply flex items-center justify-between p-4;
+}
+#ai-suggestion .description {
+    @apply w-full ml-4;
+}
+#ai-suggestion .date {
+    @apply w-56;
+}
+#ai-suggestion svg {
+    @apply w-6 h-6;
+}

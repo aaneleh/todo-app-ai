@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @import "../../index.css";
+
+#ai-summary {
+    @apply flex flex-col gap-4 items-center; 
+}

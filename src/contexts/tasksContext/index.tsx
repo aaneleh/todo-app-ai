@@ -28,7 +28,6 @@ export function TasksProvider( { children } ) {
         localStorage.setItem("nextId", JSON.stringify(nextId))
     }
     
-    /* trocar para e enviar um object dividido por dias -> getTasksByDate */
     const getTasks = () => {
         updateState()
         return tasks.filter(task => task.id !== undefined) || null;
@@ -47,7 +46,6 @@ export function TasksProvider( { children } ) {
                 description: newTask.description,
                 date: newTask.date
             }]);
-            console.log('task created (1)', tasks)
         } else {
             setTasks([...tasks, {
                 id: nextId,
@@ -55,7 +53,6 @@ export function TasksProvider( { children } ) {
                 description: newTask.description,
                 date: newTask.date
             }]);
-            console.log('task created (n)', tasks)
         }
         setNextId(nextId + 1);
         updateLocalstorage();

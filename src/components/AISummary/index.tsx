@@ -5,6 +5,7 @@ import type { Task } from '../../@types/task';
 import i18next from 'i18next';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import './styles.css';
 
 function AISummary() {
 
@@ -47,8 +48,7 @@ function AISummary() {
   return (
     <div id="ai-summary">
       <p>
-        {/* {summary} */}
-        No momento, não há tarefas na lista. Quando você adicionar novos itens, eles aparecerão aqui para acompanhar o que precisa ser feito.
+        {summary}
       </p>
         { AI.chat && 
           <Link to="/chat"> 
