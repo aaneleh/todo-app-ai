@@ -9,6 +9,10 @@
     @apply flex items-center gap-2 p-2 mb-2 rounded hover:bg-dark-background;
 }
 
+#navbar a.active {
+    @apply bg-primary;
+}
+
 @media screen and (max-width: 768px) {
     #navbar {
         @apply flex flex-row items-center justify-center h-24 gap-12;

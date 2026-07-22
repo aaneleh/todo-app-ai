@@ -11,7 +11,7 @@ function New() {
 
   const [formData, setFormData] = useState({
     description: '',
-    date: ''
+    date: (new Date()).toISOString().slice(0, -8)
   });
 
   const handleChange = (e: { currentTarget: { id: any; value: any; }; }) => {
@@ -34,7 +34,7 @@ function New() {
       <form onSubmit={handleSubmit} id="new-task-form">
           <div className="input-wrapper">
             <label htmlFor="description"> {t("tasks.description")} </label>
-            <input type="text" id="description" placeholder="Description" onChange={handleChange} value={formData.description}/>
+            <input type="text" id="description" placeholder={t("tasks.description")} onChange={handleChange} value={formData.description}/>
           </div>
           
           <div className="input-wrapper">

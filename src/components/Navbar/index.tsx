@@ -1,10 +1,12 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { FiHome, FiList, FiMessageCircle, FiSettings } from "react-icons/fi";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 function Navbar() {
+
+  const location = useLocation();
 
   const { t } = useTranslation();
 
@@ -20,11 +22,23 @@ function Navbar() {
 
   return (
     <aside id="navbar">
-      <Link to="/"> <FiHome/> {t('menu.home')} </Link>
-      <Link to="/all"> <FiList/> {t('menu.all')} </Link>
-      { AI.chat && <Link to="/chat"> <FiMessageCircle/> {t('menu.chat')} </Link>  }
+      <Link to="/" className={location.pathname == "/" ? 'active' : ''}> 
+        <FiHome/> {t('menu.home')} 
+      </Link>
+
+      <Link to="/all" className={location.pathname == "/all" ? 'active' : ''}> 
+        <FiList/> {t('menu.all')} 
+      </Link>
+
+      { AI.chat && 
+        <Link to="/chat" className={location.pathname == "/chat" ? 'active' : ''}> 
+          <FiMessageCircle/> {t('menu.chat')} 
+        </Link>  
+      }
       
-      <Link to="/settings"> <FiSettings/> {t('menu.settings')} </Link>
+      <Link to="/settings" className={location.pathname == "/settings" ? 'active' : ''}>  
+        <FiSettings/> {t('menu.settings')} 
+      </Link>
     </aside>
   )
 }

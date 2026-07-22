@@ -8,8 +8,15 @@ export function useTasks(){
 }
 
 export function TasksProvider( { children } ) {
-    const [tasks, setTasks] = useState<Task[]>([]);
-    const [nextId, setNextId] = useState<number>(0);
+    const [tasks, setTasks] = useState<Task[]>([
+    {   
+        id: 0,
+        status: false,
+        description: "Crie sua primeira tarefa",
+        date: new Date()
+    },
+    ]);
+    const [nextId, setNextId] = useState<number>(1);
 
     function updateState(){
         setTasks(JSON.parse(localStorage.getItem("tasks")))
