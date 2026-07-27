@@ -50,12 +50,21 @@ function AISuggestion() {
       { visible &&
         <div id="ai-suggestion">
           <VscSparkleCompact />
-          <p className='description'>
-            {suggestedTask?.description}
-          </p>
-          <p className="date">
-            {suggestedTask?.date}
-          </p>
+
+          <div className="suggestion-content">
+            <p className="suggestion-title">
+              Sugestão
+            </p>
+            <div className="suggestion-line">
+              <p className='description'>
+                {suggestedTask?.description}
+              </p>
+              <p className="date">
+                {suggestedTask?.date}
+              </p>
+            </div>
+          </div>
+
           <button className='icon' onClick={handleCreate} onKeyDown={handleCreate} tabIndex={0}>
             <FiPlusCircle />
           </button>

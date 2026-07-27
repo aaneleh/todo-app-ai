@@ -2,15 +2,15 @@
 @import "../../index.css";
 
 #navbar {
-    @apply h-screen min-w-64 p-2 bg-background;
+    @apply h-screen min-w-64 p-2 bg-card;
 }
 
 #navbar a {
-    @apply flex items-center gap-2 p-2 mb-2 rounded hover:bg-dark-background;
+    @apply flex items-center gap-2 p-2 mb-2 rounded hover:bg-card-hover;
 }
 
 #navbar a.active {
-    @apply bg-primary;
+    @apply text-button-font bg-linear-to-b from-primary-start to-primary-end;
 }
 
 @media screen and (max-width: 768px) {

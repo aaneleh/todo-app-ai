@@ -10,7 +10,6 @@
     @apply h-full flex flex-col gap-2 justify-start overflow-y-auto;
 }
 
-
 .user.message-wrapper {
     @apply flex justify-end;
 }
@@ -21,15 +20,15 @@
     @apply w-60 rounded px-2 py-1;
 }
 .assistant .message {
-    background-color: rgba(143, 142, 145, 0.5);
+    @apply bg-chat-ia
 }
 .user .message  {
-    background-color: rgba(138, 43, 226,0.5);
+    @apply bg-chat-user
 }
 
 .chat-input{
     @apply flex gap-2;
 }
 .chat-input input {
-    @apply w-full bg-light-background rounded py-2 px-4;
+    @apply w-full bg-card rounded py-2 px-4;
 }

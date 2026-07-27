@@ -47,9 +47,13 @@ function AISummary() {
 
   return (
     <div id="ai-summary">
-      <p>
-        {summary}
-      </p>
+      { summary ? 
+        <p className='summary-text'>{summary}</p>
+        : 
+        <p className='summary-text'> 
+          <span className="skeleton">a</span> <span className="skeleton">a</span>
+        </p>
+        }
         { AI.chat && 
           <Link to="/chat"> 
             <p className="button">    

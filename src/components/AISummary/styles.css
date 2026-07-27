@@ -4,3 +4,14 @@
 #ai-summary {
     @apply flex flex-col gap-4 items-center; 
 }
+
+.summary-text {
+    @apply flex flex-col gap-2 w-full leading-10;
+}
+
+.skeleton {
+    @apply animate-pulse bg-background rounded text-transparent h-6; 
+}
+.skeleton:last-child{
+    @apply w-1/2 ;
+}
