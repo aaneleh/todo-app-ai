@@ -5,14 +5,24 @@ import type { Task } from "../../@types/task";
 import ProgressBar from "../../components/ProgressBar"
 import './styles.css'
 import { useTranslation } from "react-i18next";
+import AISummary from "../../components/AISummary";
+import { useEffect, useState } from "react";
 
 function Home() {
 
   const { t } = useTranslation();
-
+  const d = new Date();
   const { tasks } = useTasks() as {tasks: Task[]};
 
-  const d = new Date();
+  const [ AI, setAI ] = useState({
+    chat: false,
+    summary: false,
+    suggestions: false
+  });
+
+  useEffect(() => {
+    if(localStorage.getItem('AI')) setAI(JSON.parse(localStorage.getItem('AI')))
+  },[])
 
   return (
     <section id="home">
@@ -20,7 +30,7 @@ function Home() {
       
       <div className="progress-card card">
         <h3> {t("home.progressTitle")}</h3>
-        <ProgressBar total={10} completed={4}/>
+        <ProgressBar total={tasks.length} completed={tasks.filter(task => task.status === true).length}/>
       </div>
 
       <div className="today-card card">
@@ -41,6 +51,13 @@ function Home() {
         <NewTask/>
       </div>
 
+      { 
+        AI.summary && 
+        <div className="card">
+          <h3> Resumo Inteligente </h3>
+          <AISummary></AISummary>
+        </div>  
+      }
 
     </section>
   )

@@ -11,10 +11,10 @@
     @apply w-full h-4 flex items-center justify-end gap-1 font-semibold;
 }
 .progress-bar-wrapper {
-    @apply w-full h-4 bg-dark-background rounded overflow-clip;
+    @apply w-full h-4 bg-card rounded overflow-clip;
 }
 
 .progress-bar-fill {
     @apply h-4 flex items-center justify-end pr-1 font-semibold text-button-font
-        bg-linear-to-r from-primary-hover to-primary;
+        bg-linear-to-b from-primary-start to-primary-end;
 }

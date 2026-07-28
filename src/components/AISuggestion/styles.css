@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+#ai-suggestion {
+    @apply flex items-center gap-2 p-4;
+}
+#ai-suggestion .description {
+    @apply w-full;
+}
+#ai-suggestion .date {
+    @apply w-56;
+}
+#ai-suggestion svg {
+    @apply w-6 h-6;
+}
+
+.suggestion-title{
+    @apply text-primary uppercase font-semibold text-sm
+}
+
+.suggestion-content{
+    @apply w-full ml-4;
+}
+
+.suggestion-line {
+    @apply flex w-full justify-between;
+}

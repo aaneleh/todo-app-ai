@@ -2,13 +2,13 @@
 @import "../../index.css";
 
 #task-row {
-    @apply flex w-full items-center justify-between p-4 rounded bg-background hover:bg-light-background;
+    @apply flex w-full items-center justify-between p-4 rounded bg-card hover:bg-card-hover;
 }
 #task-row p {
     @apply w-full;
 }
 #task-row .icon {
-    @apply cursor-pointer p-2 rounded hover:bg-dark-background;
+    @apply cursor-pointer p-2 rounded hover:text-primary;
 }
 #task-row svg {
     @apply w-6 h-6;
@@ -28,5 +28,4 @@
 }
 .checkbox.checked{
     @apply bg-primary rounded;
-
 }

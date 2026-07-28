@@ -11,6 +11,7 @@ function Settings() {
 
   const { t, i18n } = useTranslation();
 
+  const [ language, setLanguage ] = useState();
   const [ theme, setTheme ] = useState<string>();
   const [ AI, setAI ] = useState({
     chat: true,
@@ -30,7 +31,7 @@ function Settings() {
   }
 
   const handleLanguage = (e: { target: { value: string | undefined; }; }) => {
-    i18n.changeLanguage(e.target.value)
+    setLanguage(e.target.value)
   }
 
   const handleAI = (e) => {
@@ -47,7 +48,7 @@ function Settings() {
       if(theme === "light") document.documentElement.classList.remove("dark")
     }
     localStorage.setItem('AI', JSON.stringify(AI));
-    
+    i18n.changeLanguage(language)
   }
 
   return (
@@ -59,7 +60,7 @@ function Settings() {
         <select name="language" id="language" onChange={handleLanguage}>
           {
             Object.keys(lngs).map((lng) => (
-              <option key={lng} value={lng} > 
+              <option key={lng} value={lng}> 
                 {lngs[lng].nativeName} 
               </option>
             ))
@@ -114,7 +115,7 @@ function Settings() {
       </div>
 
       <div className="buttons">
-        <button onClick={handleSave}>{t('settings.save')}</button>
+        <button className="button" onClick={handleSave}>{t('settings.save')}</button>
       </div>
     </section>
   )

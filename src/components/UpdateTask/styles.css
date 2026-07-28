@@ -3,8 +3,8 @@
 
 #update-task-modal {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] rounded
-        bg-background
-        p-8 flex flex-col gap-4 w-120 backdrop-blur-xs ;
+        bg-card
+        p-8 flex flex-col gap-4 w-120 backdrop-blur-xs;
     .input-wrapper {
         @apply flex flex-col gap-2;
     }
@@ -16,9 +16,7 @@
         @apply w-full
     }
     .grey-button {
-        @apply bg-light-background text-font hover:bg-dark-background;
+        @apply bg-background text-font hover:bg-card-hover;
     }
-    input[type='submit']{
-        @apply bg-primary text-button-font;
-    }
+
 }

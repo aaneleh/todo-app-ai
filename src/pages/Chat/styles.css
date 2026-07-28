@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+
+#chat {
+    @apply pt-2 p-4 flex flex-col gap-4;
+}
+
+.chat-content{
+    @apply h-full flex flex-col gap-2 justify-start overflow-y-auto;
+}
+
+.user.message-wrapper {
+    @apply flex justify-end;
+}
+.assistant.message-wrapper {
+    @apply flex justify-start;
+}
+.message {
+    @apply w-60 rounded px-2 py-1;
+}
+.assistant .message {
+    @apply bg-chat-ia
+}
+.user .message  {
+    @apply bg-chat-user
+}
+
+.chat-input{
+    @apply flex gap-2;
+}
+.chat-input input {
+    @apply w-full bg-card rounded py-2 px-4;
+}

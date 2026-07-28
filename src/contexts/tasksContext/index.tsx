@@ -8,8 +8,15 @@ export function useTasks(){
 }
 
 export function TasksProvider( { children } ) {
-    const [tasks, setTasks] = useState<Task[]>([]);
-    const [nextId, setNextId] = useState<number>(0);
+    const [tasks, setTasks] = useState<Task[]>([
+    {   
+        id: 0,
+        status: false,
+        description: "Crie sua primeira tarefa",
+        date: new Date()
+    },
+    ]);
+    const [nextId, setNextId] = useState<number>(1);
 
     function updateState(){
         setTasks(JSON.parse(localStorage.getItem("tasks")))
@@ -21,7 +28,6 @@ export function TasksProvider( { children } ) {
         localStorage.setItem("nextId", JSON.stringify(nextId))
     }
     
-    /* trocar para e enviar um object dividido por dias -> getTasksByDate */
     const getTasks = () => {
         updateState()
         return tasks.filter(task => task.id !== undefined) || null;
@@ -40,7 +46,6 @@ export function TasksProvider( { children } ) {
                 description: newTask.description,
                 date: newTask.date
             }]);
-            console.log('task created (1)', tasks)
         } else {
             setTasks([...tasks, {
                 id: nextId,
@@ -48,7 +53,6 @@ export function TasksProvider( { children } ) {
                 description: newTask.description,
                 date: newTask.date
             }]);
-            console.log('task created (n)', tasks)
         }
         setNextId(nextId + 1);
         updateLocalstorage();

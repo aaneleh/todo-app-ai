@@ -1,35 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dark-background: #EBEBEB;
-  --color-background: #fff;
-  --color-light-background: #D1D1D1;
-  --color-primary: #8000FF;
-  --color-primary-hover: #8000FF;
-  --color-border: grey;
-  --color-font: #000000;
-  --color-button-font: #fff;
+  --color-card: #fff;
+  --color-background: #F5F6F6;
+  --color-card-hover: #EAEBEB;
+
+  --color-primary: #3F9FFA;
+  --color-primary-start: #2290FF;
+  --color-primary-end: #61B1F7;
+
+  --color-font: #090606;
+  --color-button-font: #FFFFFF;
+
+  --color-border: black;
+
+  --color-chat-ia: rgba(143, 142, 145, 0.5);
+  --color-chat-user: rgba(138, 43, 226,0.5);
 }
 
 /* Dark mode setup */
 @custom-variant dark (&:where(.dark, .dark *));
 @layer base {
   @variant dark {
-    --color-dark-background: #000000;
-    --color-background: #1F1F1F;
-    --color-light-background: #333333;
-    --color-primary: #8000FF;
-    --color-primary-hover: #8000FF;
-    --color-border: grey;
-    --color-font: #fff;
-    --color-button-font: #fff;
+    --color-card: #161616;
+    --color-background: #242426;
+    --color-card-hover: #37373A;
+
+    --color-primary: #3F9FFA;
+    --color-primary-start: #2290FF;
+    --color-primary-end: #61B1F7;
+
+    --color-font: #FFFFFF;
+    --color-button-font: #FFFFFF;
+
+    --color-border: white;
+
+    --color-chat-ia: rgba(143, 142, 145, 0.5);
+    --color-chat-user: rgba(138, 43, 226,0.5);
   }
 }
 
 #root {
   max-width: 100%;
   min-height: 100svh;
-  @apply flex flex-row bg-dark-background text-font;
+  @apply flex flex-row bg-background text-font;
 }
 
 main {
@@ -55,3 +69,18 @@ h2 {
 h3 {
     @apply text-xl font-semibold;
 }
+
+.input-wrapper {
+    @apply flex flex-col w-full;
+}
+
+.input-wrapper input {
+    color-scheme: dark;
+    @apply bg-background rounded py-2 px-4;
+}
+
+.button {
+    @apply rounded py-2 px-4 cursor-pointer text-button-font 
+        bg-linear-to-b from-primary-start to-primary-end;
+}
+
