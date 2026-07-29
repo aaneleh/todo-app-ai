@@ -23,10 +23,11 @@ i18n
           home: {
             title: 'Home',
             progressTitle: 'Progress',
-            progressCompleted: 'completed',
+            progressCompleted: 'finished',
             progressTotal: 'total',
             todayTitle: 'Today',
             todayNoTasks: 'No tasks for today',
+            summaryTitle: 'Smart Summary'
           },
           tasks: {
             title: 'All tasks',
@@ -37,6 +38,9 @@ i18n
             updateModal: 'Updating task',
             close: 'Close',
             save: 'Save'
+          },
+          chat: {
+            inputPlaceholder: 'Send your message',
           },
           settings: {
             title: 'Settings',
@@ -49,6 +53,10 @@ i18n
             AISummary: 'Smart Summary',
             AISuggestions: 'Suggestions',
             save: 'Save',
+          },
+          date: {
+            futurePrefix: "In",
+            pastSufix: "ago",
           }
         }
       },
@@ -67,6 +75,7 @@ i18n
             progressTotal: 'totais',
             todayTitle: 'Hoje',
             todayNoTasks: 'Nenhuma tarefa para hoje',
+            summaryTitle: 'Resumo Inteligente'
           },
           tasks: {
             title: 'Todas as tarefas',
@@ -77,6 +86,9 @@ i18n
             updateModal: 'Atualizando tarefa',
             close: 'Fechar',
             save: 'Salvar'
+          },
+          chat: {
+            inputPlaceholder: 'Envie sua mensagem',
           },
           settings: {
             title: 'Configurações',
@@ -89,6 +101,10 @@ i18n
             AISummary: 'Resumo inteligente',
             AISuggestions: 'Sugestões',
             save: 'Salvar',
+          },
+          date: {
+            futurePrefix: "Daqui a",
+            pastSufix: "atrás",
           }
         }
       }

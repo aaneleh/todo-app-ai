@@ -16,7 +16,8 @@
         @apply w-full
     }
     .grey-button {
-        @apply bg-background text-font hover:bg-card-hover;
+        @apply rounded py-2 px-4 cursor-pointer
+        bg-background text-font hover:bg-card-hover;
     }
 
 }

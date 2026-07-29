@@ -37,7 +37,7 @@
 }
 .custom-checkbox::after {
     content: '';
-    @apply absolute -top-1 -left-2 h-6 w-6 bg-background border-2 border-border rounded-full transition-all;
+    @apply absolute -top-1 -left-2 h-6 w-6 bg-card shadow rounded-full transition-all;
 }
 .checkbox-wrapper input:checked ~ .custom-checkbox {
     @apply bg-primary;

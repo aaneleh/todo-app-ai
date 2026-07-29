@@ -12,10 +12,10 @@
   --color-font: #090606;
   --color-button-font: #FFFFFF;
 
-  --color-border: black;
+  --color-border: hsl(210, 2%, 65%);
 
-  --color-chat-ia: rgba(143, 142, 145, 0.5);
-  --color-chat-user: rgba(138, 43, 226,0.5);
+  --color-chat-ia: hsl(210, 2%, 85%);
+  --color-chat-user: hsl(210, 90%, 85%);
 }
 
 /* Dark mode setup */
@@ -35,8 +35,13 @@
 
     --color-border: white;
 
-    --color-chat-ia: rgba(143, 142, 145, 0.5);
-    --color-chat-user: rgba(138, 43, 226,0.5);
+    --color-chat-ia: hsl(210, 2%, 45%);
+    --color-chat-user: hsl(210, 90%, 45%);
+
+    .input-wrapper input {
+      color-scheme: dark;
+    }
+
   }
 }
 
@@ -75,7 +80,6 @@ h3 {
 }
 
 .input-wrapper input {
-    color-scheme: dark;
     @apply bg-background rounded py-2 px-4;
 }
 
@@ -83,4 +87,5 @@ h3 {
     @apply rounded py-2 px-4 cursor-pointer text-button-font 
         bg-linear-to-b from-primary-start to-primary-end;
 }
+
 

@@ -6,14 +6,14 @@ import { useTranslation } from "react-i18next";
 
 function Navbar() {
 
+  const BASE_URL = "todo-app-ai";
+
   const location = useLocation();
 
   const { t } = useTranslation();
 
   const [ AI, setAI ] = useState({
-    chat: false,
-    summary: false,
-    suggestions: false
+
   });
 
   useEffect(() => {
@@ -22,21 +22,21 @@ function Navbar() {
 
   return (
     <aside id="navbar">
-      <Link to="/" className={location.pathname == "/" ? 'active' : ''}> 
+      <Link to={`${BASE_URL}/`} className={location.pathname == `${BASE_URL}/` ? 'active' : ''}> 
         <FiHome/> {t('menu.home')} 
       </Link>
 
-      <Link to="/all" className={location.pathname == "/all" ? 'active' : ''}> 
+      <Link to={`${BASE_URL}/all`} className={location.pathname == `${BASE_URL}/all` ? 'active' : ''}> 
         <FiList/> {t('menu.all')} 
       </Link>
 
       { AI.chat && 
-        <Link to="/chat" className={location.pathname == "/chat" ? 'active' : ''}> 
+        <Link to={`${BASE_URL}/chat`} className={location.pathname == `${BASE_URL}/chat` ? 'active' : ''}> 
           <FiMessageCircle/> {t('menu.chat')} 
         </Link>  
       }
       
-      <Link to="/settings" className={location.pathname == "/settings" ? 'active' : ''}>  
+      <Link to={`${BASE_URL}/settings`} className={location.pathname == `${BASE_URL}/settings` ? 'active' : ''}>  
         <FiSettings/> {t('menu.settings')} 
       </Link>
     </aside>

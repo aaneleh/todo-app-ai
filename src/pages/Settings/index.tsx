@@ -1,6 +1,7 @@
 import { useEffect, useState, type SetStateAction } from 'react';
 import './styles.css';
 import { useTranslation } from "react-i18next";
+import i18next from 'i18next';
 
 const lngs = {
   en: { nativeName: 'English' },
@@ -11,18 +12,9 @@ function Settings() {
 
   const { t, i18n } = useTranslation();
 
-  const [ language, setLanguage ] = useState();
-  const [ theme, setTheme ] = useState<string>();
-  const [ AI, setAI ] = useState({
-    chat: true,
-    summary: true,
-    suggestions: true
-  });
-
-  useEffect(() => {
-    setTheme(localStorage.getItem('theme')?.toString())
-    if(localStorage.getItem('AI')) setAI(JSON.parse(localStorage.getItem('AI')))
-  },[])
+  const [ language, setLanguage ] = useState(i18next.resolvedLanguage);
+  const [ theme, setTheme ] = useState<string>(localStorage.getItem('theme')?.toString());
+  const [ AI, setAI ] = useState(JSON.parse(localStorage.getItem('AI')));
 
   const handleTheme = (e: { target: { id: SetStateAction<string | undefined>; }; }) => {
     if(e.target.id === 'light' || e.target.id === 'dark') {
@@ -41,7 +33,7 @@ function Settings() {
     })
   }
 
-  const handleSave = (e) => {
+  const handleSave = () => {
     if(theme !== undefined) {
       localStorage.setItem('theme', theme);
       if(theme === "dark") document.documentElement.classList.add("dark")
@@ -49,6 +41,7 @@ function Settings() {
     }
     localStorage.setItem('AI', JSON.stringify(AI));
     i18n.changeLanguage(language)
+    window.location.reload()
   }
 
   return (
@@ -57,10 +50,10 @@ function Settings() {
 
       <div className="input-wrapper">
         <h4 className="input-title">{t('settings.subtitleLanguage')}</h4>
-        <select name="language" id="language" onChange={handleLanguage}>
+        <select name="language" id="language" onChange={handleLanguage} defaultValue={i18next.resolvedLanguage}>
           {
             Object.keys(lngs).map((lng) => (
-              <option key={lng} value={lng}> 
+              <option key={lng} value={lng} > 
                 {lngs[lng].nativeName} 
               </option>
             ))
@@ -71,17 +64,17 @@ function Settings() {
       <div className="input-wrapper">
         <h4 className="input-title">{t('settings.subtitleTheme')}</h4>
 
-        <label htmlFor="light" className="radio-label" onChange={handleTheme}>
+        <label htmlFor="light" className="radio-label" >
           <div className="radio-wrapper">
-            <input type="radio" name="theme" id="light" checked={theme == 'light'}/>
+            <input type="radio" name="theme" id="light" checked={theme == 'light'} onChange={handleTheme}/>
             <span className="custom-radio"></span>
           </div>
           {t('settings.themeLight')}
         </label>
 
-        <label htmlFor="dark" className="radio-label" onChange={handleTheme}>
+        <label htmlFor="dark" className="radio-label" >
           <div className="radio-wrapper">
-            <input type="radio" name="theme" id="dark" checked={theme == 'dark'}/>
+            <input type="radio" name="theme" id="dark" checked={theme == 'dark'} onChange={handleTheme}/>
             <span className="custom-radio"></span>
           </div>
           {t('settings.themeDark')}
