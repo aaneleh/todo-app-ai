@@ -11,11 +11,11 @@ createRoot(document.getElementById('root')!).render(
     <TasksProvider>
       <Navbar/>
       <main>
-        <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/all" element={<All/>} />
-            <Route path="/chat" element={<Chat/>} />
-            <Route path="/settings" element={<Settings/>} />
+        <Routes >
+            <Route path="/todo-app-ai" element={<Home/>} />
+            <Route path="/todo-app-ai/all" element={<All/>} />
+            <Route path="/todo-app-ai/chat" element={<Chat/>} />
+            <Route path="/todo-app-ai/settings" element={<Settings/>} />
             <Route path="*" element={<>Página não encontrada!</>} />
         </Routes>
       </main>

@@ -1,5 +1,6 @@
 import { useContext, createContext, useState } from 'react';
 import type { Task } from '../../@types/task';
+import i18next from 'i18next';
 
 const TasksContext = createContext({});
 
@@ -8,14 +9,28 @@ export function useTasks(){
 }
 
 export function TasksProvider( { children } ) {
+
+    let description;
+    if(i18next.resolvedLanguage == "pt") {
+        description = ["Tarefa 1", "Tarefa 2", "Tarefa 3"];
+    } else description = ["Task 1", "Task 2", "Task 3"];
+
     const [tasks, setTasks] = useState<Task[]>([
-    {   
-        id: 0,
+    {   id: 0,
         status: false,
-        description: "Crie sua primeira tarefa",
+        description: description[0],
         date: new Date()
     },
-    ]);
+    {   id: 1,
+        status: false,
+        description: description[1],
+        date: new Date()
+    },
+    {   id: 2,
+        status: false,
+        description: description[2],
+        date: new Date()
+    }]);
     const [nextId, setNextId] = useState<number>(1);
 
     function updateState(){

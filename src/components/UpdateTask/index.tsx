@@ -12,7 +12,7 @@ const UpdateTask = ({trigger, setTrigger, id, description, date}) => {
 
   const [formData, setFormData] = useState({
     description: description,
-    date: date
+    date: date.toISOString().slice(0, -8)
   });
 
   const handleChange = (e: { currentTarget: { id: any; value: any; }; }) => {
@@ -51,7 +51,7 @@ const UpdateTask = ({trigger, setTrigger, id, description, date}) => {
       </div>
 
       <div className="buttons">
-        <button onClick={handleClose} className="button grey-button">{t('tasks.close')} </button>
+        <button onClick={handleClose} className="grey-button">{t('tasks.close')} </button>
         <input type="submit" value={t('tasks.save')}  onChange={handleSubmit} className="button"/>
       </div>
     </form>

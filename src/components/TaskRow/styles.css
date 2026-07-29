@@ -13,9 +13,22 @@
 #task-row svg {
     @apply w-6 h-6;
 }
-#task-row .subtext{
-    @apply w-36 ;
+#task-row .date{
+    @apply w-42 text-sm opacity-60;
 }
+
+#task-row.late {
+    .date{
+        @apply text-red-400 opacity-80;
+    }
+}
+#task-row.finished {
+    @apply opacity-50;
+    .description {
+        @apply line-through
+    }
+}
+
 .checkbox {
     @apply min-w-6 h-6 mr-2 cursor-pointer rounded;
     &.unchecked  {
