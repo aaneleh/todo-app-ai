@@ -2,13 +2,13 @@
 @import "../../index.css";
 
 #ai-suggestion {
-    @apply flex items-center gap-2 p-4;
+    @apply flex items-center gap-2 p-4 bg-card rounded;
 }
 #ai-suggestion .description {
     @apply w-full;
 }
 #ai-suggestion .date {
-    @apply w-56;
+    @apply w-54 text-sm opacity-60;
 }
 #ai-suggestion svg {
     @apply w-6 h-6;
@@ -24,4 +24,14 @@
 
 .suggestion-line {
     @apply flex w-full justify-between;
+}
+
+.skeleton {
+    @apply animate-pulse bg-gray-200 rounded text-transparent h-6; 
+    &.description {
+        @apply max-w-80
+    }
+    &.date {
+        @apply max-w-20
+    }
 }

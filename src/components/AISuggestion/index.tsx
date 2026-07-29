@@ -1,38 +1,54 @@
-import OpenAI from 'openai';
-import { useTasks } from '../../contexts/tasksContext';
-import { useEffect, useState } from 'react';
-import type { Task } from '../../@types/task';
-import i18next from 'i18next';
+import './styles.css'
 import { VscSparkleCompact } from "react-icons/vsc";
 import { FiPlusCircle } from "react-icons/fi";
-import './styles.css'
+import { useEffect, useState } from 'react';
+import { useTasks } from '../../contexts/tasksContext';
+import type { Task } from '../../@types/task';
+import i18next from 'i18next';
+import { formatDistance } from "date-fns";
+import { enGB, ptBR } from "date-fns/locale";
+import OpenAI from 'openai';
+import { ToastContainer, toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 function AISuggestion() {
-
+  
+  let client: OpenAI;
+  const openAI_API = import.meta.env.VITE_OPENAI_API_KEY;
+  const { t } = useTranslation();
   const { tasks } = useTasks() as {tasks: Task[]};
   const { createTask } = useTasks() as {createTask: any};
   const [suggestedTask, setSuggestedTask] = useState<Task>();
   const [visible, setVisible] = useState<boolean>(true);
+  const theme = localStorage.getItem('theme') == 'dark' ? 'dark' : 'light';
 
-  const openAI_API = import.meta.env.VITE_OPENAI_API_KEY;
-  const client = new OpenAI({
-    apiKey: openAI_API,
-    dangerouslyAllowBrowser: true
-  });
+  try {
+    client = new OpenAI({
+      apiKey: openAI_API,
+      dangerouslyAllowBrowser: true
+    });
+  } catch (error) {
+    console.error('Failed to connect to OpenAI:', error);
+    toast.error('Ocorreu ao conectar à OpenAI')
+  }
 
   const getSuggestion = async () => {
-    const instructions = `Utilize o idioma atual para a descrição: ${i18next.resolvedLanguage}`;
-    const input = `Crie uma nova tarefa baseado na lista de tarefas do usuário: ${JSON.stringify(tasks)}. Responda com objeto no formato { description: <descrição da tarefa>, date: <data no formato yyyy-mm-ddThh:mm> }`;
+    try {
+      const instructions = `Responda em ${i18next.resolvedLanguage == "pt" ? "português" : "inglês"}`;
+      const input = `Crie uma nova tarefa baseado na lista de tarefas do usuário: ${JSON.stringify(tasks)}. Responda com objeto no formato { description: <descrição da tarefa>, date: <data no formato yyyy-mm-ddThh:mm> }`;
+      const response = await client.responses.create({
+        model: 'gpt-5.4-mini',
+        instructions: instructions,
+        input: input,
+      });
       
-    const response = await client.responses.create({
-      model: 'gpt-5.4-mini',
-      instructions: instructions,
-      input: input,
-    });
-    console.log(response.output_text);
-    console.log(JSON.parse(response.output_text));
-    const resJSON = JSON.parse(response.output_text);
-    setSuggestedTask({description: resJSON.description, date: resJSON.date})
+      const resJSON = JSON.parse(response.output_text);
+      setSuggestedTask({description: resJSON.description, date: resJSON.date})
+      
+    } catch (error) {
+      console.error('Failed to get response from OpenAI:', error);
+      toast.error('Ocorreu um erro no resumo inteligente!')
+    }
   }
 
   const handleCreate = () => {
@@ -42,7 +58,6 @@ function AISuggestion() {
 
   useEffect(() => {
     getSuggestion();
-
   },[])
 
   return (
@@ -55,14 +70,30 @@ function AISuggestion() {
             <p className="suggestion-title">
               Sugestão
             </p>
-            <div className="suggestion-line">
-              <p className='description'>
-                {suggestedTask?.description}
-              </p>
-              <p className="date">
-                {suggestedTask?.date}
-              </p>
-            </div>
+
+            {
+              suggestedTask?.description ?
+                <div className="suggestion-line">
+                  <p className='description'>
+                    {suggestedTask?.description}
+                  </p>
+                  <p className="date">
+                    {suggestedTask?.date < new Date() ? "" : `${t("date.futurePrefix")} `} 
+                    { formatDistance(suggestedTask?.date, new Date(), {locale: i18next.resolvedLanguage == 'pt' ? ptBR : enGB })}
+                    {suggestedTask?.date < new Date() ? ` ${t("date.pastSufix")}` : ""} 
+                  </p>
+                </div>
+              :
+                <div className="suggestion-line">
+                  <p className='skeleton description'>
+                    description
+                  </p>
+                  <p className='skeleton date'>
+                    date
+                  </p>
+                </div>
+            }
+
           </div>
 
           <button className='icon' onClick={handleCreate} onKeyDown={handleCreate} tabIndex={0}>
@@ -70,6 +101,18 @@ function AISuggestion() {
           </button>
         </div>
       }
+      <div className="toast">
+        <ToastContainer />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          closeOnClick
+          pauseOnFocusLoss
+          pauseOnHover
+          theme={theme}
+        />
+      </div>
     </>
   )
 }
