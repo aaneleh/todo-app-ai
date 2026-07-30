@@ -12,13 +12,7 @@ function Navbar() {
 
   const { t } = useTranslation();
 
-  const [ AI, setAI ] = useState({
-
-  });
-
-  useEffect(() => {
-    if(localStorage.getItem('AI')) setAI(JSON.parse(localStorage.getItem('AI')))
-  },[])
+  const [ AI ] = useState(JSON.parse(localStorage.getItem('AI')));
 
   return (
     <aside id="navbar">

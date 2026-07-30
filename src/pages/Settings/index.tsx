@@ -41,7 +41,7 @@ function Settings() {
     }
     localStorage.setItem('AI', JSON.stringify(AI));
     i18n.changeLanguage(language)
-    window.location.reload()
+    /* window.location.reload() */
   }
 
   return (

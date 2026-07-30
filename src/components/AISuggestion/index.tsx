@@ -22,6 +22,7 @@ function AISuggestion() {
   const [visible, setVisible] = useState<boolean>(true);
   const theme = localStorage.getItem('theme') == 'dark' ? 'dark' : 'light';
 
+  
   try {
     client = new OpenAI({
       apiKey: openAI_API,
@@ -47,7 +48,7 @@ function AISuggestion() {
       
     } catch (error) {
       console.error('Failed to get response from OpenAI:', error);
-      toast.error('Ocorreu um erro no resumo inteligente!')
+      toast.error('Ocorreu um erro ao gerar a sugestão')
     }
   }
 
