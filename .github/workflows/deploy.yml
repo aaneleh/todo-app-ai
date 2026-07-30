@@ -27,12 +27,11 @@ jobs:
           run: npm install
 
         - name: Build Project
-          run: npm run build
+          run: vite build
           env:
             VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
 
         - name: Deploy to GitHub Pages
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
           run: npm run deploy
