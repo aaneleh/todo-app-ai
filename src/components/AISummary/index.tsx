@@ -9,7 +9,6 @@ import OpenAI from 'openai';
 import { ToastContainer, toast } from 'react-toastify';
 
 function AISummary() {
-  console.log(import.meta.env)
 
   const openAI_API = import.meta.env.VITE_OPENAI_API_KEY;
   const { t } = useTranslation();
