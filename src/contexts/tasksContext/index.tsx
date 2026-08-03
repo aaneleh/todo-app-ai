@@ -14,6 +14,14 @@ export function TasksProvider( { children } ) {
     if(i18next.resolvedLanguage == "pt") {
         description = ["Tarefa 1", "Tarefa 2", "Tarefa 3"];
     } else description = ["Task 1", "Task 2", "Task 3"];
+    
+    if(localStorage.getItem("AI") === null) {
+        localStorage.setItem("AI", JSON.stringify({
+            chat: true,
+            summary: true,
+            suggestions: true
+        }));
+    }
 
     const [tasks, setTasks] = useState<Task[]>([
     {   id: 0,
