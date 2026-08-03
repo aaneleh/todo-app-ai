@@ -2,5 +2,7 @@
 @import "../../index.css";
 
 #new-task-form {
-    @apply flex items-end gap-4 w-full bg-card pt-2 p-4 rounded; 
+    @apply flex items-end gap-4 w-full bg-card pt-2 p-4 rounded
+    flex-col md:flex-row; 
 }
+
