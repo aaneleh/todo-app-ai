@@ -5,7 +5,6 @@ import { Home, All, Chat, Settings } from './pages'
 import Navbar from './components/Navbar';
 import { TasksProvider } from './contexts/tasksContext';
 import '../i18n.js'
-import { useTranslation } from "react-i18next";
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter basename="/todo-app-ai">
