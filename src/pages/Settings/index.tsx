@@ -2,6 +2,7 @@ import { useEffect, useState, type SetStateAction } from 'react';
 import './styles.css';
 import { useTranslation } from "react-i18next";
 import i18next from 'i18next';
+import { ToastContainer, toast } from 'react-toastify';
 
 const lngs = {
   en: { nativeName: 'English' },
@@ -41,10 +42,12 @@ function Settings() {
     }
     localStorage.setItem('AI', JSON.stringify(AI));
     i18n.changeLanguage(language)
-    /* window.location.reload() */
+    toast.success('Configurações salvas com sucesso!')
+    window.location.reload();
   }
 
   return (
+    <>
     <section id="settings">
       <h2>{t('settings.title')}</h2>
 
@@ -111,6 +114,20 @@ function Settings() {
         <button className="button" onClick={handleSave}>{t('settings.save')}</button>
       </div>
     </section>
+
+    <div className="toast">
+      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        theme={theme}
+      />
+    </div>
+    </>
   )
 }
 

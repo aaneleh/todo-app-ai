@@ -37,7 +37,8 @@ i18n
             submit: 'Create',
             updateModal: 'Updating task',
             close: 'Close',
-            save: 'Save'
+            save: 'Save',
+            suggestion: 'Suggestion'
           },
           chat: {
             inputPlaceholder: 'Send your message',
@@ -57,6 +58,10 @@ i18n
           date: {
             futurePrefix: "In",
             pastSufix: "ago",
+          },
+          openAI: {
+            conectionError: 'Failed to connect to OpenAI',
+            responseError: 'Failed to get response from OpenAI',
           }
         }
       },
@@ -66,7 +71,7 @@ i18n
             home: 'Início',
             all: 'Tarefas',
             chat: 'Chat',
-            settings: 'Configurações'
+            settings: 'Preferências'
           },
           home: {
             title: 'Início',
@@ -85,7 +90,8 @@ i18n
             submit: 'Criar',
             updateModal: 'Atualizando tarefa',
             close: 'Fechar',
-            save: 'Salvar'
+            save: 'Salvar',
+            suggestion: 'Sugestão'
           },
           chat: {
             inputPlaceholder: 'Envie sua mensagem',
@@ -105,6 +111,10 @@ i18n
           date: {
             futurePrefix: "Daqui a",
             pastSufix: "atrás",
+          },
+          openAI: {
+            conectionError: 'Ocorreu um erro ao conectar à OpenAI',
+            responseError: 'Ocorreu um erro ao tentar obter uma resposta de OpenAI',
           }
         }
       }

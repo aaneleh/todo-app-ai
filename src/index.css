@@ -22,13 +22,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @layer base {
   @variant dark {
-    --color-card: #161616;
-    --color-background: #242426;
+    --color-card: #090909;
+    --color-background: #161616;
     --color-card-hover: #37373A;
-
-    --color-primary: #3F9FFA;
-    --color-primary-start: #2290FF;
-    --color-primary-end: #61B1F7;
 
     --color-font: #FFFFFF;
     --color-button-font: #FFFFFF;

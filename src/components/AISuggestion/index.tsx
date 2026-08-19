@@ -29,8 +29,8 @@ function AISuggestion() {
       dangerouslyAllowBrowser: true
     });
   } catch (error) {
-    console.error('Failed to connect to OpenAI:', error);
-    toast.error('Ocorreu ao conectar à OpenAI')
+    console.error(t("openAI.conectionError"), error);
+    toast.error(t("openAI.conectionError"))
   }
 
   const getSuggestion = async () => {
@@ -47,8 +47,8 @@ function AISuggestion() {
       setSuggestedTask({description: resJSON.description, date: resJSON.date})
       
     } catch (error) {
-      console.error('Failed to get response from OpenAI:', error);
-      toast.error('Ocorreu um erro ao gerar a sugestão')
+      console.error(t("tasks.toastError"), error);
+      toast.error(t("tasks.toastError"))
     }
   }
 
@@ -69,7 +69,7 @@ function AISuggestion() {
 
           <div className="suggestion-content">
             <p className="suggestion-title">
-              Sugestão
+              {t("tasks.suggestion")}
             </p>
 
             {

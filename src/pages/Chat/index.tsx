@@ -35,8 +35,8 @@ function Chat() {
     });
 
   } catch (error) {
-    toast.error('Ocorreu um erro ao tentar conectar à OpenAI');
-    console.error('Failed to connect to OpenAI:', error);
+    console.error(t("openAI.conectionError"), error);
+    toast.error(t("openAI.conectionError"));
   }
 
   const scrollToBottom = () => {
@@ -85,8 +85,8 @@ function Chat() {
       ])
 
     } catch (error) {
-      console.error('Failed to get response from OpenAI:', error);
-      toast.error('Ocorreu um erro ao tentar obter uma resposta');
+      console.error(t("openAI.responseError"), error);
+      toast.error(t("openAI.responseError"));
     }
   }
 
