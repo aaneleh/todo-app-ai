@@ -38,8 +38,8 @@ function AISummary() {
       setSummary(response.output_text);
 
     } catch (error) {
-      console.error('Failed to get response from OpenAI:', error);
-      toast.error('Ocorreu um erro no resumo inteligente!')
+      console.error(t("openAI.conectionError"), error);
+      toast.error(t("openAI.conectionError"))
     }
   }
 

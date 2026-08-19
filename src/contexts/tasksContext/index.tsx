@@ -12,8 +12,8 @@ export function TasksProvider( { children } ) {
 
     let description;
     if(i18next.resolvedLanguage == "pt") {
-        description = ["Tarefa 1", "Tarefa 2", "Tarefa 3"];
-    } else description = ["Task 1", "Task 2", "Task 3"];
+        description = ["Acessar menu 'Tarefas'", "Criar uma nova tarefa", "Concluir uma tarefa"];
+    } else description = ["Access 'All Tasks' menu", "Create a new task", "Complete a task"];
     
     if(localStorage.getItem("AI") === null) {
         localStorage.setItem("AI", JSON.stringify({
@@ -27,17 +27,17 @@ export function TasksProvider( { children } ) {
     {   id: 0,
         status: false,
         description: description[0],
-        date: new Date()
+        date: new Date((new Date()).getTime() + -1*60000)
     },
     {   id: 1,
         status: false,
         description: description[1],
-        date: new Date()
+        date: new Date((new Date()).getTime() + 10*60000)
     },
     {   id: 2,
         status: false,
         description: description[2],
-        date: new Date()
+        date: new Date((new Date()).getTime() + 15*60000)
     }]);
     const [nextId, setNextId] = useState<number>(1);
 

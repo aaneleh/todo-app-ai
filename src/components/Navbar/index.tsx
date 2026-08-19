@@ -1,36 +1,39 @@
 import { Link, useLocation } from "react-router";
 import { FiHome, FiList, FiMessageCircle, FiSettings } from "react-icons/fi";
 import "./styles.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import Logo from '../../assets/logo.svg';
+import LogoDrk from '../../assets/logoDrk.svg';
 
 function Navbar() {
 
-  const BASE_URL = "todo-app-ai";
-
   const location = useLocation();
-
   const { t } = useTranslation();
-
   const [ AI ] = useState(JSON.parse(localStorage.getItem('AI')));
+  const theme = localStorage.getItem('theme')?.toString();
 
   return (
     <aside id="navbar">
-      <Link to={`${BASE_URL}/`} className={location.pathname == `${BASE_URL}/` ? 'active' : ''}> 
+      <Link to={`/ `} className={'logo'}> 
+        <img src={theme === 'dark' ? Logo : LogoDrk} alt="todo-app"/> 
+      </Link>
+
+      <Link to={`/ `} className={`link ${location.pathname == `/` ? 'active' : ''}`}> 
         <FiHome/> {t('menu.home')} 
       </Link>
 
-      <Link to={`${BASE_URL}/all`} className={location.pathname == `${BASE_URL}/all` ? 'active' : ''}> 
+      <Link to={`/all`} className={`link ${location.pathname == `/all` ? 'active' : ''}`}> 
         <FiList/> {t('menu.all')} 
       </Link>
 
       { AI.chat && 
-        <Link to={`${BASE_URL}/chat`} className={location.pathname == `${BASE_URL}/chat` ? 'active' : ''}> 
+        <Link to={`/chat`} className={`link ${location.pathname == `/chat` ? 'active' : ''}`}> 
           <FiMessageCircle/> {t('menu.chat')} 
         </Link>  
       }
       
-      <Link to={`${BASE_URL}/settings`} className={location.pathname == `${BASE_URL}/settings` ? 'active' : ''}>  
+      <Link to={`/settings`} className={`link ${location.pathname == `/settings` ? 'active' : ''}`}>  
         <FiSettings/> {t('menu.settings')} 
       </Link>
     </aside>
