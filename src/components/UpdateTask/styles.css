@@ -2,6 +2,10 @@
 @import "../../index.css";
 
 #update-task-modal {
+    @apply fixed top-0 left-0 w-full h-full bg-black/30 z-50 backdrop-blur-[2px];
+}
+
+#update-task-form {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] rounded
         bg-card
         p-8 flex flex-col gap-4 w-120 backdrop-blur-xs;

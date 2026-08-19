@@ -5,22 +5,29 @@
     @apply h-screen min-w-64 p-2 bg-card;
 }
 
-#navbar a {
+#navbar .link {
     @apply flex items-center gap-2 p-2 mb-2 rounded hover:bg-card-hover;
 }
 
-#navbar a.active {
+#navbar .link.active {
     @apply text-button-font bg-linear-to-b from-primary-start to-primary-end;
+}
+
+#navbar .logo {
+    @apply flex justify-center mt-4 mb-6;
 }
 
 @media screen and (max-width: 768px) {
     #navbar {
         @apply flex flex-row items-center justify-center h-24 gap-12;
     }
-    #navbar a {
+    #navbar .link {
         @apply flex flex-col mb-0 w-24;
     }
     #navbar svg {
         @apply w-6 h-6;
+    }
+    #navbar .logo {
+        @apply hidden;
     }
 } 
