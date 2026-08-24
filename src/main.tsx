@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from "react-router";
+import { HashRouter, BrowserRouter, Routes, Route } from "react-router";
 import './index.css'
 import { Home, All, Chat, Settings } from './pages'
 import Navbar from './components/Navbar';
@@ -7,7 +7,7 @@ import { TasksProvider } from './contexts/tasksContext';
 import '../i18n.js'
 
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter basename="/todo-app-ai">
+  <HashRouter >
     <TasksProvider>
       <Navbar/>
       <main>
@@ -19,5 +19,5 @@ createRoot(document.getElementById('root')!).render(
         </Routes>
       </main>
     </TasksProvider>
-  </BrowserRouter>,
+  </HashRouter>,
 )

@@ -11,12 +11,12 @@ function Navbar() {
   const location = useLocation();
   const { t } = useTranslation();
   const [ AI ] = useState(JSON.parse(localStorage.getItem('AI')));
-  const theme = localStorage.getItem('theme')?.toString();
+  //const theme = localStorage.getItem('theme')?.toString();
 
   return (
     <aside id="navbar">
       <Link to={`/ `} className={'logo'}> 
-        <img src={theme === 'dark' ? Logo : LogoDrk} alt="todo-app"/> 
+        <img src={localStorage.getItem('theme')?.toString() === 'dark' ? Logo : LogoDrk} alt="todo-app"/> 
       </Link>
 
       <Link to={`/ `} className={`link ${location.pathname == `/` ? 'active' : ''}`}> 
