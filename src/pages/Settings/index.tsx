@@ -3,6 +3,7 @@ import './styles.css';
 import { useTranslation } from "react-i18next";
 import i18next from 'i18next';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 const lngs = {
   en: { nativeName: 'English' },
@@ -10,9 +11,10 @@ const lngs = {
 };
 
 function Settings() {
-
+  
   const { t, i18n } = useTranslation();
-
+  let navigate = useNavigate();
+  
   const [ language, setLanguage ] = useState(i18next.resolvedLanguage);
   const [ theme, setTheme ] = useState<string>(localStorage.getItem('theme')?.toString());
   const [ AI, setAI ] = useState(JSON.parse(localStorage.getItem('AI')));
@@ -44,6 +46,7 @@ function Settings() {
     i18n.changeLanguage(language)
     toast.success('Configurações salvas com sucesso!')
     window.location.reload();
+    navigate('/settings');
   }
 
   return (
