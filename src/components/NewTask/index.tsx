@@ -26,7 +26,7 @@ function New() {
     createTask({description: formData.description, date: new Date(formData.date)})
     setFormData({
       description: '',
-      date: ''
+      date: (new Date()).toISOString().slice(0, -8)
     })
   }
 
