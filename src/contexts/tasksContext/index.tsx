@@ -1,4 +1,4 @@
-import { useContext, createContext, useState } from 'react';
+import { useContext, createContext, useState, useEffect } from 'react';
 import type { Task } from '../../@types/task';
 import i18next from 'i18next';
 
@@ -23,23 +23,36 @@ export function TasksProvider( { children } ) {
         }));
     }
 
-    const [tasks, setTasks] = useState<Task[]>([
-    {   id: 0,
-        status: false,
-        description: description[0],
-        date: new Date((new Date()).getTime() + -1*60000)
-    },
-    {   id: 1,
-        status: false,
-        description: description[1],
-        date: new Date((new Date()).getTime() + 10*60000)
-    },
-    {   id: 2,
-        status: false,
-        description: description[2],
-        date: new Date((new Date()).getTime() + 15*60000)
-    }]);
+    const [tasks, setTasks] = useState<Task[]|null>([]);
     const [nextId, setNextId] = useState<number>(1);
+
+    if(tasks?.length === 0) {
+        updateState()
+        
+        setTasks([
+            {   id: 0,
+                status: false,
+                description: description[0],
+                date: new Date((new Date()).getTime() + -1*60000)
+            },
+            {   id: 1,
+                status: false,
+                description: description[1],
+                date: new Date((new Date()).getTime() + 10*60000)
+            },
+            {   id: 2,
+                status: false,
+                description: description[2],
+                date: new Date((new Date()).getTime() + 15*60000)
+            }
+        ])
+
+        setNextId(3)
+    }
+
+    useEffect(() => {
+        updateLocalstorage()
+    }, [tasks, nextId]);
 
     function updateState(){
         setTasks(JSON.parse(localStorage.getItem("tasks")))
@@ -47,6 +60,7 @@ export function TasksProvider( { children } ) {
     }
 
     function updateLocalstorage(){
+        console.log(tasks)
         localStorage.setItem("tasks", JSON.stringify(tasks))
         localStorage.setItem("nextId", JSON.stringify(nextId))
     }
@@ -78,7 +92,7 @@ export function TasksProvider( { children } ) {
             }]);
         }
         setNextId(nextId + 1);
-        updateLocalstorage();
+        //updateLocalstorage();
     }
 
     const toggleStatus = (id : number, status : boolean) => {
@@ -90,7 +104,7 @@ export function TasksProvider( { children } ) {
                 return task;
             })
         })
-        updateLocalstorage()
+        //updateLocalstorage()
     }
 
     const updateTask = ( updatedTask : Task ) => {
@@ -102,12 +116,11 @@ export function TasksProvider( { children } ) {
                 return task;
             })
         })
-        updateLocalstorage()
+        //updateLocalstorage()
     }
 
     const deleteTask = (id : number) => {
         setTasks(tasks.filter(task => task.id !== id))
-        updateLocalstorage()
     }
 
     return (

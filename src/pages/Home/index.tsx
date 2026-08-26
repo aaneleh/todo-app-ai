@@ -1,5 +1,4 @@
 import './styles.css'
-import { useState } from "react";
 import { useTasks } from "../../contexts/tasksContext";
 import type { Task } from "../../@types/task";
 import NewTask from "../../components/NewTask"
@@ -21,7 +20,7 @@ function Home() {
       
       <div className="progress-card card">
         <h3> {t("home.progressTitle")}</h3>
-        <ProgressBar total={tasks.length} completed={tasks.filter(task => task.status === true).length}/>
+        <ProgressBar total={tasks == null ? 0 : tasks.length} completed={tasks.filter(task => task.status === true).length}/>
       </div>
 
       <div className="today-card card">
