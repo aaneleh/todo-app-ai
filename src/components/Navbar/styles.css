@@ -2,7 +2,7 @@
 @import "../../index.css";
 
 #navbar {
-    @apply h-screen min-w-64 p-2 bg-card;
+    @apply sticky top-0 h-screen min-w-64 p-2 bg-card;
 }
 
 #navbar .link {
@@ -19,10 +19,10 @@
 
 @media screen and (max-width: 768px) {
     #navbar {
-        @apply flex flex-row items-center justify-center h-24 gap-12;
+        @apply flex flex-row items-center justify-center h-24 gap-4;
     }
     #navbar .link {
-        @apply flex flex-col mb-0 w-24;
+        @apply flex flex-col mb-0 w-28;
     }
     #navbar svg {
         @apply w-6 h-6;

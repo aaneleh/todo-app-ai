@@ -1,8 +1,23 @@
 @import "tailwindcss";
 @import "../../index.css";
 
+
 #new-task-form {
-    @apply flex items-end gap-4 w-full bg-card pt-2 p-4 rounded
-    flex-col md:flex-row; 
+    @apply flex flex-row items-end gap-4 w-full bg-card pt-2 p-4 rounded;
+}
+
+@media screen and (max-width: 840px) {
+
+    #new-task-form {
+        @apply grid grid-cols-4 grid-rows-2 gap-4;
+    }
+
+    #new-task-form .input-wrapper:has(#description) {
+        @apply col-span-4;
+    }
+
+    #new-task-form .input-wrapper:has(#date) {
+        @apply col-span-3;
+    }
 }
 

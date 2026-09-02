@@ -8,3 +8,12 @@
 .card {
     @apply flex flex-col gap-4 p-4 rounded bg-card;
 }
+
+
+@media screen and (max-width: 768px) {
+    #home {
+        @apply pt-2 p-4 flex flex-col justify-start gap-4;
+        height: calc(100dvh - 96px);
+        overflow-y: scroll;
+    }
+}
