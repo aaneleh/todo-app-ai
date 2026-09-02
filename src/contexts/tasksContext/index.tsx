@@ -60,7 +60,6 @@ export function TasksProvider( { children } ) {
     }
 
     function updateLocalstorage(){
-        console.log(tasks)
         localStorage.setItem("tasks", JSON.stringify(tasks))
         localStorage.setItem("nextId", JSON.stringify(nextId))
     }

@@ -14,5 +14,5 @@ h2 {
 }
 
 #all .new-task-form-wrapper {
-    @apply flex items-end bg-background rounded pt-2 p-4 gap-4 w-full;
+    @apply flex items-end bg-background rounded gap-4 w-full;
 }
